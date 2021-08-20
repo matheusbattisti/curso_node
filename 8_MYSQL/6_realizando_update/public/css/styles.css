@@ -68,3 +68,7 @@ h1 {
 #book-page .container {
   text-align: center;
 }
+
+.actions {
+  margin-top: 1em;
+}
