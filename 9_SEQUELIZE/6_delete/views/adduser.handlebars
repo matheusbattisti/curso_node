@@ -1,0 +1,16 @@
+<h1>Adicione um usuário</h1>
+<form action="/users/create" method="POST" class="form">
+  <div class="form-control">
+    <label for="name">Nome:</label>
+    <input type="text" name="name" placeholder="Digite o nome do usuário">
+  </div>
+  <div class="form-control">
+    <label for="occupation">Profissão:</label>
+    <input type="text" name="occupation" placeholder="Digite a profissão">
+  </div>
+  <div class="form-control form-checkbox">
+    <input type="checkbox" name="newsletter" checked>
+    <label for="newsletter">Enviar promoções?</label>
+  </div>
+  <input type="submit" value="Cadastrar">
+</form>
