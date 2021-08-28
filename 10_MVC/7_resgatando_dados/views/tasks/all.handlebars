@@ -1,0 +1,13 @@
+<h1>Todas as Tasks:</h1>
+<ul class="task-list">
+  {{#each tasks}}
+    <li>
+      <a href="/" class="title">{{this.title}}</a>
+      <span class="actions">
+        <a href="/"><i class="bi bi-check2"></i></a>
+        <a href="/"><i class="bi bi-pencil-square"></i></a>
+        <a href="/"><i class="bi bi-x-lg"></i></a>
+      </span>
+    </li>
+  {{/each}}
+</ul>
