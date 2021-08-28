@@ -1,0 +1,21 @@
+<h1>Todas as Tasks:</h1>
+<ul class="task-list">
+  {{#if emptyTasks}}
+    <p>Não há tarefas cadastradas</p>
+  {{/if}}
+  {{#each tasks}}
+    <li>
+      <a href="/" class="title">{{this.title}}</a>
+      <span class="actions">
+        <a href="/"><i class="bi bi-check2"></i></a>
+        <a href="/"><i class="bi bi-pencil-square"></i></a>
+        <form action="/tasks/remove" method="POST">
+          <input type="hidden" name="id" value={{this.id}}>
+          <button type="submit">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </form>
+      </span>
+    </li>
+  {{/each}}
+</ul>
