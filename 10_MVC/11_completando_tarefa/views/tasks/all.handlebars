@@ -5,9 +5,19 @@
   {{/if}}
   {{#each tasks}}
     <li>
-      <a href="/" class="title">{{this.title}}</a>
+      {{#if this.done}}
+        <a href="/tasks/edit/{{this.id}}" class="title done">{{this.title}}</a>
+      {{else}}
+        <a href="/tasks/edit/{{this.id}}" class="title">{{this.title}}</a>
+      {{/if}}
       <span class="actions">
-        <a href="/"><i class="bi bi-check2"></i></a>
+        <form action="/tasks/updatestatus" method="POST">
+          <input type="hidden" name="id" value={{this.id}}>
+          <input type="hidden" name="done" value={{this.done}}>
+          <button type="submit">
+            <i class="bi bi-check2"></i>
+          </button>
+        </form>
         <a href="/tasks/edit/{{this.id}}"><i class="bi bi-pencil-square"></i></a>
         <form action="/tasks/remove" method="POST">
           <input type="hidden" name="id" value={{this.id}}>

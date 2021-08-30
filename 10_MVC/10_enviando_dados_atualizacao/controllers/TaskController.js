@@ -48,4 +48,17 @@ module.exports = class TaskController {
       })
       .catch((err) => console.log())
   }
+
+  static updateTaskPost(req, res) {
+    const id = req.body.id
+
+    const task = {
+      title: req.body.title,
+      description: req.body.description,
+    }
+
+    Task.update(task, { where: { id: id } })
+      .then(res.redirect('/tasks'))
+      .catch((err) => console.log())
+  }
 }
