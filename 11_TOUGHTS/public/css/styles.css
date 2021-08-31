@@ -2,16 +2,24 @@
   font-family: Helvetica, sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #282828;
+  color: #fff;
+}
+
+/* NAVBAR */
+#logo img {
+  height: 40px;
 }
 
 #navbar {
-  padding: 1em 2em;
+  padding: 1.2em 2.4em;
   margin-bottom: 1em;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #db4c3f;
+  background-color: #222;
   color: #fff;
+  border-bottom: 1px solid #f6982d;
 }
 
 #navbar ul {
@@ -26,4 +34,87 @@
 #navbar ul li a {
   text-decoration: none;
   color: #fff;
+  transition: 0.5s;
+  font-weight: bold;
+}
+
+#navbar ul li a:hover {
+  color: #f6982d;
+}
+
+/* CONTAINER */
+.container {
+  min-height: 60vh;
+  padding: 2em;
+}
+
+/* LOGIN E REGISTER */
+.auth-container {
+  max-width: 450px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-container h2 {
+  margin-bottom: 1em;
+  color: #f6982d;
+  border-left: 4px solid #f6982d;
+  padding: 0.3em;
+  width: 100px;
+}
+
+.auth-container a {
+  color: #f6982d;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.form-control label {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.form-control input,
+.form-control textarea {
+  padding: 7px;
+  border-radius: 3px;
+  border: 1px solid #f6982d;
+}
+
+form input[type="submit"] {
+  background-color: transparent;
+  color: #f6982d;
+  border: 2px solid #f6982d;
+  padding: 0.5em 1.3em;
+  margin-bottom: 1em;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+form input[type="submit"]:hover {
+  background-color: #f6982d;
+  color: #111;
+}
+
+/* FOOTER */
+footer {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #f6982d;
+  background-color: #222;
+}
+
+footer span {
+  font-weight: bold;
+  color: #f6982d;
 }

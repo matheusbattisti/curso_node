@@ -1,34 +1,40 @@
-const express = require('express')
-const exphbs = require('express-handlebars')
+const express = require("express");
+const exphbs = require("express-handlebars");
 
-const app = express()
+const app = express();
 
-const conn = require('./db/conn')
+const conn = require("./db/conn");
 
 // Models
-const Tought = require('./models/Tought')
+const Tought = require("./models/Tought");
 
 // routes
-const taskRoutes = require('./routes/tasksRoutes')
+const toughtsRoutes = require("./routes/toughtsRoutes");
+const authRoutes = require("./routes/authRoutes");
 
-app.engine('handlebars', exphbs())
-app.set('view engine', 'handlebars')
+app.engine("handlebars", exphbs());
+app.set("view engine", "handlebars");
 
 app.use(
   express.urlencoded({
     extended: true,
-  }),
-)
+  })
+);
 
-app.use(express.json())
+app.use(express.json());
 
-app.use(express.static('public'))
+app.use(express.static("public"));
 
-app.use('/tasks', taskRoutes)
+app.use("/toughts", toughtsRoutes);
+app.use("/", authRoutes);
+
+app.get("/", (req, res) => {
+  res.render("toughts/home");
+});
 
 conn
   .sync()
   .then(() => {
-    app.listen(3000)
+    app.listen(3000);
   })
-  .catch((err) => console.log(err))
+  .catch((err) => console.log(err));
