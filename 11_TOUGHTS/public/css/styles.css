@@ -43,6 +43,17 @@
 }
 
 /* CONTAINER */
+.message {
+  padding: 1em;
+  color: #004085;
+  background-color: #cce5ff;
+  border: 1px soli d#b8daff;
+  border-radius: 5px;
+  text-align: center;
+  margin: 0 auto 2em;
+  max-width: 60%;
+}
+
 .container {
   min-height: 60vh;
   padding: 2em;
@@ -58,7 +69,7 @@
 
 .auth-container h2 {
   margin-bottom: 1em;
-  color: #f6982d;
+  color: #fff;
   border-left: 4px solid #f6982d;
   padding: 0.3em;
   width: 100px;
@@ -86,7 +97,7 @@
   border: 1px solid #f6982d;
 }
 
-form input[type="submit"] {
+form input[type='submit'] {
   background-color: transparent;
   color: #f6982d;
   border: 2px solid #f6982d;
@@ -99,9 +110,9 @@ form input[type="submit"] {
   transition: 0.5s;
 }
 
-form input[type="submit"]:hover {
+form input[type='submit']:hover {
   background-color: #f6982d;
-  color: #111;
+  color: #fff;
 }
 
 /* FOOTER */

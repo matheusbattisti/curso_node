@@ -3,15 +3,19 @@
     <form action="/register" method="POST">
         <div class="form-control">
             <label for="text">Nome:</label>
-            <input type="name" name="name" placeholder="Digite o seu nome">
+            <input type="name" name="name" placeholder="Digite o seu nome" required>
         </div>
         <div class="form-control">
             <label for="email">E-mail:</label>
-            <input type="email" name="email" placeholder="Digite o seu e-mail">
+            <input type="email" name="email" placeholder="Digite o seu e-mail" required>
         </div>
             <div class="form-control">
-            <label for="password">E-mail:</label>
-            <input type="password" name="password" placeholder="Digite a sua senha">
+            <label for="password">Senha:</label>
+            <input type="password" name="password" placeholder="Digite a sua senha" required>
+        </div>
+        <div class="form-control">
+            <label for="confirmpassword">Confirmação de senha:</label>
+            <input type="password" name="confirmpassword" placeholder="Confirme a sua senha" required>
         </div>
         <input type="submit" value="Cadastrar">
         <p>Já tem conta? <a href="/login">Clique aqui</a></p>

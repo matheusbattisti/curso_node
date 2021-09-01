@@ -1,11 +1,11 @@
 const Tought = require('../models/Tought')
 
 module.exports = class ToughController {
-  static createTough(req, res) {
-    res.render('toughs/create')
+  static createTought(req, res) {
+    res.render('toughts/create')
   }
 
-  static createToughSave(req, res) {
+  static createToughtSave(req, res) {
     const Tought = {
       title: req.body.title,
       description: req.body.description,
@@ -13,11 +13,11 @@ module.exports = class ToughController {
     }
 
     Tought.create(Tought)
-      .then(res.redirect('/toughs'))
+      .then(res.redirect('/toughts'))
       .catch((err) => console.log())
   }
 
-  static showToughs(req, res) {
+  static showToughts(req, res) {
     Tought.findAll({ raw: true })
       .then((data) => {
         let emptyToughs = false
@@ -26,30 +26,30 @@ module.exports = class ToughController {
           emptyToughs = true
         }
 
-        res.render('toughs/all', { toughs: data, emptyToughs })
+        res.render('toughts/all', { toughts: data, emptyToughs })
       })
       .catch((err) => console.log(err))
   }
 
-  static removeTough(req, res) {
+  static removeTought(req, res) {
     const id = req.body.id
 
     Tought.destroy({ where: { id: id } })
-      .then(res.redirect('/toughs'))
+      .then(res.redirect('/toughts'))
       .catch((err) => console.log())
   }
 
-  static updateTough(req, res) {
+  static updateTought(req, res) {
     const id = req.params.id
 
     Tought.findOne({ where: { id: id }, raw: true })
       .then((data) => {
-        res.render('toughs/edit', { Tought: data })
+        res.render('toughts/edit', { Tought: data })
       })
       .catch((err) => console.log())
   }
 
-  static updateToughPost(req, res) {
+  static updateToughtPost(req, res) {
     const id = req.body.id
 
     const Tought = {
@@ -58,11 +58,11 @@ module.exports = class ToughController {
     }
 
     Tought.update(Tought, { where: { id: id } })
-      .then(res.redirect('/toughs'))
+      .then(res.redirect('/toughts'))
       .catch((err) => console.log())
   }
 
-  static toggleToughStatus(req, res) {
+  static toggleToughtStatus(req, res) {
     const id = req.body.id
 
     console.log(req.body)
@@ -74,7 +74,7 @@ module.exports = class ToughController {
     console.log(Tought)
 
     Tought.update(Tought, { where: { id: id } })
-      .then(res.redirect('/toughs'))
+      .then(res.redirect('/toughts'))
       .catch((err) => console.log())
   }
 }

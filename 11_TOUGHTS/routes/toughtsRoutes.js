@@ -2,12 +2,15 @@ const express = require('express')
 const router = express.Router()
 const ToughController = require('../controllers/ToughController')
 
-router.get('/add', ToughController.createTough)
-router.post('/add', ToughController.createToughSave)
-router.post('/remove', ToughController.removeTough)
-router.get('/edit/:id', ToughController.updateTough)
-router.post('/edit', ToughController.updateToughPost)
-router.post('/updatestatus', ToughController.toggleToughStatus)
-router.get('/', ToughController.showToughs)
+// import check auth middleware
+const checkAuth = require('../helpers/auth').checkAuth
+
+router.get('/add', checkAuth, ToughController.createTought)
+router.post('/add', ToughController.createToughtSave)
+router.post('/remove', ToughController.removeTought)
+router.get('/edit/:id', ToughController.updateTought)
+router.post('/edit', ToughController.updateToughtPost)
+router.post('/updatestatus', ToughController.toggleToughtStatus)
+router.get('/', ToughController.showToughts)
 
 module.exports = router

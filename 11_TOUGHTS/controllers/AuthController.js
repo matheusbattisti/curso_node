@@ -1,19 +1,68 @@
-const User = require("../models/User");
+const User = require('../models/User')
+
+const bcrypt = require('bcryptjs')
 
 module.exports = class UserController {
   static login(req, res) {
-    res.render("auth/login");
+    res.render('auth/login')
   }
 
   static loginPost(req, res) {
-    return false;
+    const { email, password } = req.body
   }
 
   static register(req, res) {
-    res.render("auth/register");
+    res.render('auth/register')
   }
 
-  static registerPost(req, res) {
-    return false;
+  static async registerPost(req, res) {
+    const { name, email, password, confirmpassword } = req.body
+
+    // passwords match validation
+    if (password != confirmpassword) {
+      res.render('auth/register', {
+        message: 'As senhas não conferem, tente novamente!',
+      })
+
+      return
+    }
+
+    // email validation
+    const checkIfUserExists = await User.findOne({ where: { email: email } })
+
+    if (checkIfUserExists) {
+      res.render('auth/register', {
+        message: 'E-mail já utilizado, utilize outro!',
+      })
+
+      return
+    }
+
+    const salt = bcrypt.genSaltSync(10)
+    const hashedPassword = bcrypt.hashSync(password, salt)
+
+    const user = {
+      name,
+      email,
+      password: hashedPassword,
+    }
+
+    User.create(user)
+      .then((user) => {
+        // initialize session
+        req.session.userid = user.id
+
+        console.log('salvou dado')
+        console.log(req.session.userid)
+
+        res.redirect('/')
+      })
+      .catch((err) => console.log(err))
   }
-};
+
+  static logout(req, res) {
+    req.session.destroy()
+
+    res.redirect('/login')
+  }
+}
