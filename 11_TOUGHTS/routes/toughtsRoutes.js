@@ -1,16 +1,16 @@
-const express = require('express')
-const router = express.Router()
-const ToughController = require('../controllers/ToughController')
+const express = require("express");
+const router = express.Router();
+const ToughtController = require("../controllers/ToughtController");
 
 // import check auth middleware
-const checkAuth = require('../helpers/auth').checkAuth
+const checkAuth = require("../helpers/auth").checkAuth;
 
-router.get('/add', checkAuth, ToughController.createTought)
-router.post('/add', ToughController.createToughtSave)
-router.post('/remove', ToughController.removeTought)
-router.get('/edit/:id', ToughController.updateTought)
-router.post('/edit', ToughController.updateToughtPost)
-router.post('/updatestatus', ToughController.toggleToughtStatus)
-router.get('/', ToughController.showToughts)
+router.get("/add", checkAuth, ToughtController.createTought);
+router.post("/add", checkAuth, ToughtController.createToughtSave);
+router.post("/remove", checkAuth, ToughtController.removeTought);
+router.get("/edit/:id", checkAuth, ToughtController.updateTought);
+router.post("/edit", checkAuth, ToughtController.updateToughtPost);
+router.get("/dashboard", checkAuth, ToughtController.dashboard);
+router.get("/", ToughtController.showToughts);
 
-module.exports = router
+module.exports = router;
