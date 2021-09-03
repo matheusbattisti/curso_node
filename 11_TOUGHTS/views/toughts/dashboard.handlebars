@@ -3,6 +3,14 @@
     <a href="/toughts/add">Criar Pensamento</a>
 </div>
 <h3>Seus pensamentos:</h3>
+<ul>
+    {{#each toughts}}
+        <li>
+            <span class="label">{{this.title}}</span>
+            <span class="actions"><a href="/toughts/edit/{{this.id}}">Editar</a> Excluir</span>
+        </li>
+    {{/each}}
+</ul>
 {{#if emptyToughts}}
     <p>Ainda não há nenhum pensamento cadastrado, crie o seu <a href="/toughts/add">clicando aqui</a></p>
 {{/if}}
