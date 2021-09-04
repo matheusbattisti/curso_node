@@ -38,7 +38,12 @@ module.exports = class ToughController {
     }
 
     Tought.create(tought)
-      .then(res.redirect('/'))
+      .then(() => {
+        req.flash('message', 'Pensamento criado com sucesso!')
+        req.session.save(() => {
+          res.redirect('/toughts/dashboard')
+        })
+      })
       .catch((err) => console.log())
   }
 
@@ -60,7 +65,12 @@ module.exports = class ToughController {
     const id = req.body.id
 
     Tought.destroy({ where: { id: id } })
-      .then(res.redirect('/toughts'))
+      .then(() => {
+        req.flash('message', 'Pensamento removido com sucesso!')
+        req.session.save(() => {
+          res.redirect('/toughts/dashboard')
+        })
+      })
       .catch((err) => console.log())
   }
 
@@ -83,7 +93,12 @@ module.exports = class ToughController {
     }
 
     Tought.update(tought, { where: { id: id } })
-      .then(res.redirect('/toughts'))
+      .then(() => {
+        req.flash('message', 'Pensamento atualizado com sucesso!')
+        req.session.save(() => {
+          res.redirect('/toughts/dashboard')
+        })
+      })
       .catch((err) => console.log())
   }
 
