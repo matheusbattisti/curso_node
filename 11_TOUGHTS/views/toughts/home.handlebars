@@ -1,1 +1,8 @@
-<h1>opa</h1>
+<h3>Os pensamentos:</h3>
+<ul>
+    {{#each toughts}}
+        <li>
+            <span class="label">{{this.title}}</span> por {{this.'User.name'}}
+        </li>
+    {{/each}}
+</ul>

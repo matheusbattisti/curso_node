@@ -2,7 +2,7 @@
   font-family: Helvetica, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #282828;
+  background-color: #222;
   color: #fff;
 }
 
@@ -97,7 +97,8 @@
   border: 1px solid #f6982d;
 }
 
-form input[type='submit'] {
+form input[type="submit"],
+.btn {
   background-color: transparent;
   color: #f6982d;
   border: 2px solid #f6982d;
@@ -107,12 +108,78 @@ form input[type='submit'] {
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
+  text-decoration: none;
   transition: 0.5s;
 }
 
-form input[type='submit']:hover {
+form input[type="submit"]:hover,
+.btn:hover {
   background-color: #f6982d;
   color: #fff;
+}
+
+/* DASHBOARD */
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5em;
+}
+
+.title-container h2 {
+  border-left: 4px solid #f6982d;
+  padding: 10px;
+}
+
+.dashboard h3 {
+  margin-bottom: 1.5em;
+}
+
+.dashboard ul {
+  list-style: none;
+}
+
+.dashboard li {
+  padding: 12px;
+  border-bottom: 1px solid #f6982d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard .label {
+  font-weight: bold;
+  color: #f6982d;
+  margin-right: 2em;
+}
+
+.dashboard .actions {
+  display: flex;
+}
+
+.dashboard .actions .btn {
+  color: #fff;
+  border-color: #fff;
+  margin: 0 0.5em;
+}
+
+/* CREATE / EDIT FORM */
+.tought-form-container a {
+  color: #f6982d;
+}
+
+.tought-form-container a:hover {
+  color: #fff;
+}
+
+.tought-form-container h1 {
+  border-left: 4px solid #f6982d;
+  padding: 10px;
+  margin-top: 1em;
+}
+
+.tought-form-container form {
+  max-width: 30%;
+  margin-top: 1.5em;
 }
 
 /* FOOTER */

@@ -1,22 +1,24 @@
-<div class="title-container">
-    <h2>Dashboard</h2>
-    <a href="/toughts/add">Criar Pensamento</a>
+<div class="dashboard">
+    <div class="title-container">
+        <h2>Dashboard</h2>
+        <a href="/toughts/add" class="btn">Criar Pensamento</a>
+    </div>
+    <h3>Seus pensamentos:</h3>
+    <ul>
+        {{#each toughts}}
+            <li>
+                <span class="label">{{this.title}}</span>
+                <span class="actions">
+                    <a href="/toughts/edit/{{this.id}}" class="btn">Editar</a>
+                    <form action="/toughts/remove" method="POST">
+                        <input type="hidden" name="id" value="{{this.id}}">
+                        <input type="submit" value="Excluir" class="btn">
+                    </form>
+                </span>
+            </li>
+        {{/each}}
+    </ul>
+    {{#if emptyToughts}}
+        <p>Ainda não há nenhum pensamento cadastrado, crie o seu <a href="/toughts/add">clicando aqui</a></p>
+    {{/if}}
 </div>
-<h3>Seus pensamentos:</h3>
-<ul>
-    {{#each toughts}}
-        <li>
-            <span class="label">{{this.title}}</span>
-            <span class="actions">
-                <a href="/toughts/edit/{{this.id}}">Editar</a>
-                <form action="/toughts/remove" method="POST">
-                    <input type="hidden" name="id" value="{{this.id}}">
-                    <input type="submit" value="Excluir">
-                </form>
-            </span>
-        </li>
-    {{/each}}
-</ul>
-{{#if emptyToughts}}
-    <p>Ainda não há nenhum pensamento cadastrado, crie o seu <a href="/toughts/add">clicando aqui</a></p>
-{{/if}}
