@@ -97,7 +97,7 @@
   border: 1px solid #f6982d;
 }
 
-form input[type="submit"],
+form input[type='submit'],
 .btn {
   background-color: transparent;
   color: #f6982d;
@@ -112,7 +112,7 @@ form input[type="submit"],
   transition: 0.5s;
 }
 
-form input[type="submit"]:hover,
+form input[type='submit']:hover,
 .btn:hover {
   background-color: #f6982d;
   color: #fff;
@@ -180,6 +180,59 @@ form input[type="submit"]:hover,
 .tought-form-container form {
   max-width: 30%;
   margin-top: 1.5em;
+}
+
+/* HOME */
+.home-header {
+  display: flex;
+  flex-direction: column;
+  max-width: 60%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.home-header h1 {
+  margin-bottom: 1em;
+}
+
+.home-header span {
+  color: #f6982d;
+}
+
+.home-header form {
+  margin-bottom: 1em;
+}
+
+.home-header input {
+  border: none;
+  border-bottom: 1px solid #fff;
+  padding: 0.5em;
+  margin-right: 1em;
+}
+
+.home-header input[type='text'] {
+  width: 60%;
+}
+
+.home-header input::placeholder {
+  color: #fff;
+}
+
+.toughts-container figure {
+  border-bottom: 1px solid #333;
+  padding: 0.5em;
+  max-width: 50%;
+  margin: 0 auto 1em;
+}
+
+.toughts-container blockquote {
+  font-style: italic;
+  font-size: 2em;
+  margin-bottom: 0.4em;
+}
+
+.toughts-container span {
+  color: #f6982d;
 }
 
 /* FOOTER */

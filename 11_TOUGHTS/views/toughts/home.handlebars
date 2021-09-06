@@ -1,8 +1,26 @@
-<h3>Os pensamentos:</h3>
-<ul>
+<div class="home-header">
+    {{#if search}}
+    <h1>Você está buscando por: <span>{{search}}</span></h1>
+        {{#if toughtsQty }}
+            <p>Foram encontrados <span>{{toughtsQty}}</span> pensamentos</p>
+        {{else}}
+            <p>Nenhum pensamento encontrado para o termo <span>{{search}}</span></p>
+        {{/if}}
+    {{else}}
+    <h1>Conheça alguns dos nossos <span>Pensamentos</span>:</h1>
+    {{/if}}
+    <form action="/" method="GET">
+        <input type="text" name="search" placeholder="Está buscando por algo?">
+        <input type="submit" class="btn" value="Buscar">
+    </form>
+</div>
+<div class="toughts-container">
     {{#each toughts}}
-        <li>
-            <span class="label">{{this.title}}</span> por {{this.'User.name'}}
-        </li>
+        <figure>
+            <blockquote>
+                "{{this.title}}"
+            </blockquote>
+            <figcaption>por <span>{{this.User.name}}</span></figcaption>
+        </figure>
     {{/each}}
-</ul>
+</div>
