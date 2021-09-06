@@ -199,6 +199,10 @@ form input[type='submit']:hover,
   color: #f6982d;
 }
 
+.home-header p {
+  margin-bottom: 1.2em;
+}
+
 .home-header form {
   margin-bottom: 1em;
 }
@@ -216,6 +220,44 @@ form input[type='submit']:hover,
 
 .home-header input::placeholder {
   color: #fff;
+}
+
+.order-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 80%;
+  margin: 0 auto 1em;
+}
+
+.order-container span {
+  font-weight: bold;
+  color: #fff;
+}
+
+.order-container form {
+  margin: 0;
+}
+
+.order-container button {
+  margin-bottom: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.order-container button:hover,
+.order-container a:hover {
+  color: #f6982d;
+}
+
+.order-container span,
+.order-container button,
+.order-container a {
+  margin: 0 10px;
+}
+
+.order-container i {
+  color: #f6982d;
 }
 
 .toughts-container figure {

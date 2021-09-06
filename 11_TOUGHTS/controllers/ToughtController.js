@@ -50,6 +50,8 @@ module.exports = class ToughController {
   }
 
   static showToughts(req, res) {
+    console.log(req.query)
+
     // check if user is searching
     let search = ''
 
@@ -57,11 +59,21 @@ module.exports = class ToughController {
       search = req.query.search
     }
 
+    // order results, newest first
+    let order = 'DESC'
+
+    if (req.query.order === 'old') {
+      order = 'ASC'
+    } else {
+      order = 'DESC'
+    }
+
     Tought.findAll({
       include: User,
       where: {
         title: { [Op.like]: `%${search}%` },
       },
+      order: [['createdAt', order]],
     })
       .then((data) => {
         let toughtsQty = data.length

@@ -2,7 +2,7 @@
     {{#if search}}
     <h1>Você está buscando por: <span>{{search}}</span></h1>
         {{#if toughtsQty }}
-            <p>Foram encontrados <span>{{toughtsQty}}</span> pensamentos</p>
+            <p>Foram encontrados <span>{{toughtsQty}}</span> pensamento(s)</p>
         {{else}}
             <p>Nenhum pensamento encontrado para o termo <span>{{search}}</span></p>
         {{/if}}
@@ -13,6 +13,20 @@
         <input type="text" name="search" placeholder="Está buscando por algo?">
         <input type="submit" class="btn" value="Buscar">
     </form>
+    <div class="order-container">
+        <span>Ordenar por:</span>  
+        <form action="/" method="GET">
+            <input type="hidden" name="search" value="{{this.search}}">
+            <input type="hidden" name="order" value="new">
+            <button type="submit"><i class="bi bi-arrow-up"></i> Mais novos</button>
+        </form>
+        <form action="/" method="GET">
+            <input type="hidden" name="search" value="{{this.search}}">
+            <input type="hidden" name="order" value="old">
+            <button type="submit"><i class="bi bi-arrow-down"></i> Mais novos</button>
+        </form>
+        <a href="/">Limpar</a>
+    </div>
 </div>
 <div class="toughts-container">
     {{#each toughts}}
