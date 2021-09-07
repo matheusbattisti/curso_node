@@ -2,8 +2,6 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const app = express()
 
-const conn = require('./db/conn').run
-
 const productsRoutes = require('./routes/productsRoutes')
 
 app.engine('handlebars', exphbs())
