@@ -69,16 +69,25 @@ form {
 }
 
 .product {
-  width: 23%;
-  margin: 1%;
+  width: 25%;
   text-align: center;
   margin-bottom: 1em;
 }
+
 .product img {
   max-width: 100%;
   margin-bottom: 0.5em;
 }
 
 .product h3 {
+  margin-bottom: 1em;
+}
+
+.product-page img {
+  max-width: 250px;
+  margin-bottom: 1em;
+}
+
+.product-page p {
   margin-bottom: 1em;
 }
