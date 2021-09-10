@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('../db/conn')
 const { Schema } = mongoose
 
 const Product = mongoose.model(
