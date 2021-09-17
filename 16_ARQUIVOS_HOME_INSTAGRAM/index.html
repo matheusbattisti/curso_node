@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maxmum-scale=1, user-scalable=no">
+  <title>Instagram</title>
+  <link rel="shortcut icon" href="img/favicon.png" />
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main>
+    <div id="main-container">
+      <!-- BANNER LATERAL -->
+      <div id="banner-container">
+        <img src="img/imagem_cel_exterior.png" alt="Crie uma conta no Instagram">
+      </div>
+      <!-- FORM DE LOGIN E REGISTRO -->
+      <div id="form-container">
+        <div id="form-box">
+          <img id="logo-insta" src="img/logo_instagram.png" alt="Instagram">
+          <form id="login-form">
+            <input type="text" name="username" placeholder="Telefone, nome de usuário ou email">
+            <input type="password" name="password" placeholder="Senha">
+            <input type="submit" value="Entrar">
+          </form>
+          <div class="separator">
+            <div class="line"></div>
+            <span>Ou</span>
+          </div>
+          <div id="other-links">
+            <div id="facebook-login">
+              <a href="#">
+                <img src="img/logo_facebook.svg" alt="Facebook">
+                <span>Entrar com o Facebook</span>
+              </a>
+            </div>
+            <div id="forgot-pass">
+              <a href="#">Esqueceu a senha?</a>
+            </div>
+          </div>
+        </div>
+        <div id="register-container">
+          <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
+        </div>
+        <div id="get-app-container">
+          <p>Obtenha o aplicativo.</p>
+          <a href="#">
+            <img src="img/botao_apple.png" alt="Apple Store">
+          </a>
+          <a href="#">
+            <img src="img/botao_google_play.png" alt="Google Play">
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- RODAPÉ E LINKS DE NAVEGAÇÃO -->
+  <footer>
+    <nav>
+      <ul id="footer-links">
+        <li><a href="#">Sobre</a></li>
+        <li><a href="#">Ajuda</a></li>
+        <li><a href="#">Imprensa</a></li>
+        <li><a href="#">API</a></li>
+        <li><a href="#">Carreiras</a></li>
+        <li><a href="#">Privacidade</a></li>
+        <li><a href="#">Termos</a></li>
+        <li><a href="#">Localizações</a></li>
+        <li><a href="#">Contas mais relevantes</a></li>
+        <li><a href="#">Hashtags</a></li>
+        <li><a href="#">Idioma</a></li>
+      </ul>
+    </nav>
+    <p id="copyright">&copy; Instagram do Facebook</p>
+  </footer>
+</body>
+</html>
