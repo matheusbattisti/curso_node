@@ -1,8 +1,13 @@
-const router = require('express').Router()
+const router = require("express").Router();
 
-const UserController = require('../controllers/UserController')
+const UserController = require("../controllers/UserController");
 
-router.get('/', UserController.getAll)
-router.post('/create', UserController.create)
+// middlewares
+const verifyToken = require("../helpers/check-token");
 
-module.exports = router
+router.post("/register", UserController.register);
+router.post("/login", UserController.login);
+router.get("/:id", UserController.getUserById);
+router.put("/edit/:id", verifyToken, UserController.editUser);
+
+module.exports = router;

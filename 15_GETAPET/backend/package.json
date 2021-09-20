@@ -10,8 +10,11 @@
   "author": "Matheus <matheus@horadecodar.com.br> (http://www.horadecodar.com.br/)",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.6",
+    "multer": "^1.4.3",
     "nodemon": "^2.0.12"
   }
 }

@@ -1,8 +1,8 @@
-const mongoose = require('../db/conn')
-const { Schema } = mongoose
+const mongoose = require("../db/conn");
+const { Schema } = mongoose;
 
 const User = mongoose.model(
-  'User',
+  "User",
   new Schema({
     name: {
       type: String,
@@ -16,7 +16,7 @@ const User = mongoose.model(
       type: String,
       required: true,
     },
-  }),
-)
+  })
+);
 
-module.exports = User
+module.exports = User;
