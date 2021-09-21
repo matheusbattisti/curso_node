@@ -1,8 +1,8 @@
-const mongoose = require('../db/conn')
-const { Schema } = mongoose
+const mongoose = require("../db/conn");
+const { Schema } = mongoose;
 
 const Pet = mongoose.model(
-  'Pet',
+  "Pet",
   new Schema({
     name: {
       type: String,
@@ -14,7 +14,6 @@ const Pet = mongoose.model(
     },
     description: {
       type: String,
-      required: true,
     },
     weight: {
       type: Number,
@@ -30,9 +29,10 @@ const Pet = mongoose.model(
     },
     available: {
       type: Boolean,
-      required: true,
     },
-  }),
-)
+    user: Object,
+    adopter: Object,
+  })
+);
 
-module.exports = Pet
+module.exports = Pet;

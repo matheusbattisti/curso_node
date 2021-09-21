@@ -3,6 +3,10 @@ const jwt = require("jsonwebtoken");
 
 const User = require("../models/User");
 
+// helpers
+const getUserByToken = require("../helpers/get-user-by-token");
+const getToken = require("../helpers/get-token");
+
 module.exports = class UserController {
   static async register(req, res) {
     const name = req.body.name;
@@ -118,6 +122,7 @@ module.exports = class UserController {
       // payload data
       {
         name: user.name,
+        email: user.email,
         id: user._id,
       },
       "nossosecret"
@@ -145,8 +150,17 @@ module.exports = class UserController {
   }
 
   static async editUser(req, res) {
-    const id = req.body.id;
+    const token = getToken(req);
+
+    console.log(token);
+
+    const user = await getUserByToken(token);
+
+    console.log(user);
+
     const name = req.body.name;
+    const email = req.body.email;
+    const image = req.body.image;
     const password = req.body.password;
     const confirmpassword = req.body.confirmpassword;
 
@@ -156,9 +170,25 @@ module.exports = class UserController {
       return;
     }
 
+    user.name = name;
+
     if (!email) {
       res.status(422).json({ message: "O e-mail é obrigatório!" });
       return;
+    }
+
+    // check if user exists
+    const userExists = await User.findOne({ email: email });
+
+    if (user.email !== email && userExists) {
+      res.status(422).json({ message: "Por favor, utilize outro e-mail!" });
+      return;
+    }
+
+    user.email = email;
+
+    if (!image) {
+      user.image = image;
     }
 
     // check if password match
@@ -166,19 +196,21 @@ module.exports = class UserController {
       res.status(422).json({ error: "As senhas não conferem." });
 
       // change password
-    } else if (password == confirmPassword && password != null) {
+    } else if (password == confirmpassword && password != null) {
       // creating password
       const salt = await bcrypt.genSalt(12);
       const reqPassword = req.body.password;
 
       const passwordHash = await bcrypt.hash(reqPassword, salt);
+
+      user.password = passwordHash;
     }
 
     try {
       // returns updated data
       const updatedUser = await User.findOneAndUpdate(
-        { _id: userId },
-        { $set: updateData },
+        { _id: user._id },
+        { $set: user },
         { new: true }
       );
       res.json({

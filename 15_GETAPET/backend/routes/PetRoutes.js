@@ -1,8 +1,14 @@
-const router = require('express').Router()
+const router = require("express").Router();
 
-const PetController = require('../controllers/PetController')
+const PetController = require("../controllers/PetController");
 
-router.get('/', PetController.getAll)
-router.post('/create', PetController.create)
+// middlewares
+const verifyToken = require("../helpers/check-token");
 
-module.exports = router
+router.post("/create", verifyToken, PetController.create);
+router.get("/", PetController.getAll);
+router.get("/:id", PetController.getPetById);
+router.delete("/:id", verifyToken, PetController.removePetById);
+router.patch("/:id", verifyToken, PetController.updatePet);
+
+module.exports = router;
