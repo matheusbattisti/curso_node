@@ -1,0 +1,17 @@
+{
+  "name": "17_API_REST_NODE_MONGOOSE_YT",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./index.js localhost 3000"
+  },
+  "keywords": [],
+  "author": "Matheus <matheus@horadecodar.com.br> (http://www.horadecodar.com.br/)",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.7",
+    "nodemon": "^2.0.13"
+  }
+}
