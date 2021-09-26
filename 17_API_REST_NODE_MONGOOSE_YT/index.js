@@ -1,12 +1,18 @@
-const express = require('express')
-const app = express()
+// config inicial
+const express = require("express");
+const app = express();
 
 app.use(
   express.urlencoded({
     extended: true,
-  }),
-)
+  })
+);
 
-app.use(express.json())
+app.use(express.json());
 
-app.listen(3000)
+// rotas
+app.get("/", (req, res) => {
+  res.json({ message: "Oi Express!" });
+});
+
+app.listen(3000);
