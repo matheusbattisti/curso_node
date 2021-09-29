@@ -1,38 +1,36 @@
-import { useState, useEffect, useContext } from "react";
-import Input from "../form/Input";
+import axios from 'axios'
+import { useState, useEffect, useContext } from 'react'
+import Input from '../form/Input'
 
 /* contexts */
-import messageContext from "../../context/messageContext";
+import messageContext from '../../context/messageContext'
 
 function Login() {
-  const [auth, setAuth] = useState({});
+  const [auth, setAuth] = useState({})
 
-  const MessageContext = useContext(messageContext);
+  const MessageContext = useContext(messageContext)
 
   function handleChange(e) {
-    setAuth({ ...auth, [e.target.name]: e.target.value });
+    setAuth({ ...auth, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(auth);
+    e.preventDefault()
+    console.log(auth)
+    // MessageContext.setMessage('eta')
 
-    MessageContext.setMessage("eta");
+    // console.log(MessageContext.message)
 
-    console.log(MessageContext.message);
-
-    fetch(`http://localhost:5000/users/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(auth),
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        console.log(data);
-      });
-  };
+    axios
+      .post(`http://localhost:5000/users/login`, auth, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log(response)
+        const data = response.data
+        console.log(data)
+      })
+  }
 
   return (
     <section>
@@ -55,7 +53,7 @@ function Login() {
         <input type="submit" value="Entrar" />
       </form>
     </section>
-  );
+  )
 }
 
-export default Login;
+export default Login
