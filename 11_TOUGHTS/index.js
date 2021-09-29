@@ -30,13 +30,13 @@ app.use(express.json());
 //session middleware
 app.use(
   session({
-    name: "session",
-    secret: "nosso_secret",
+    name: 'session',
+    secret: 'nosso_secret',
     resave: false,
     saveUninitialized: false,
     store: new FileStore({
       logFn: function () {},
-      path: require("path").join(require("os").tmpdir(), "sessions"),
+      path: require('path').join(require('os').tmpdir(), 'sessions'),
     }),
     cookie: {
       secure: false,
@@ -44,8 +44,8 @@ app.use(
       expires: new Date(Date.now() + 3600000),
       httpOnly: true,
     },
-  })
-);
+  }),
+)
 
 // flash messages
 app.use(flash());
