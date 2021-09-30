@@ -1,8 +1,11 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+
+import styles from "./Navbar.module.css";
 
 function Navbar() {
   return (
-    <nav>
+    <nav className={styles.navbar}>
+      <h2>Get A Pet</h2>
       <ul>
         <li>
           <Link to="/">Adotar</Link>
@@ -15,7 +18,7 @@ function Navbar() {
         </li>
       </ul>
     </nav>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
