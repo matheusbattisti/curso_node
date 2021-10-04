@@ -1,13 +1,17 @@
-import { Link } from 'react-router-dom'
-import React, { useContext } from 'react'
+import { Link } from "react-router-dom";
+import React, { useContext } from "react";
 
-import styles from './Navbar.module.css'
+import styles from "./Navbar.module.css";
 
 /* context */
-import { userContext } from '../../context/userContext'
+import { userContext } from "../../context/userContext";
+
+/* hooks */
+import useLogout from "../../hooks/useLogout";
 
 function Navbar() {
-  const { user, isLoading } = useContext(userContext)
+  const { user, isLoading } = useContext(userContext);
+  const { logout } = useLogout();
 
   return (
     <nav className={styles.navbar}>
@@ -21,9 +25,7 @@ function Navbar() {
             <li>
               <Link to="/pet/add">Cadastrar Pet</Link>
             </li>
-            <li>
-              <Link to="/logout">Sair</Link>
-            </li>
+            <li onClick={logout}>Sair</li>
           </>
         ) : (
           <>
@@ -31,13 +33,13 @@ function Navbar() {
               <Link to="/login">Entrar</Link>
             </li>
             <li>
-              <Link to="/register">Registrar</Link>
+              <Link to="/register">Registar</Link>
             </li>
           </>
         )}
       </ul>
     </nav>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
