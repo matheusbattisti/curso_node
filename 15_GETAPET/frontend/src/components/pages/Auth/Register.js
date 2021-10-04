@@ -1,17 +1,27 @@
-import axios from "axios";
-import { useState, useEffect, useContext } from "react";
-import Input from "../form/Input";
+import axios from 'axios'
+import { useState, useEffect, useContext } from 'react'
+import Input from '../../form/Input'
 
 function Register() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({})
 
   function handleChange(e) {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setUser({ ...user, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+    e.preventDefault()
+
+    axios
+      .post(`http://localhost:5000/users/register`, user, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log(response)
+        const data = response.data
+        console.log(data)
+      })
+  }
 
   return (
     <section>
@@ -48,7 +58,7 @@ function Register() {
         <input type="submit" value="Entrar" />
       </form>
     </section>
-  );
+  )
 }
 
-export default Register;
+export default Register

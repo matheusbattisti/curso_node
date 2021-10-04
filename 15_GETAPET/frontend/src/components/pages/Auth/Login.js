@@ -1,9 +1,9 @@
 import axios from 'axios'
 import { useState, useEffect, useContext } from 'react'
-import Input from '../form/Input'
+import Input from '../../form/Input'
 
 /* contexts */
-import messageContext from '../../context/messageContext'
+import messageContext from '../../../context/messageContext'
 
 function Login() {
   const [auth, setAuth] = useState({})

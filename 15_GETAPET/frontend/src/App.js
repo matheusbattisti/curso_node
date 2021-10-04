@@ -8,8 +8,9 @@ import Message from './components/layout/Message'
 
 /* pages */
 import Home from './components/pages/Home'
-import Login from './components/pages/Login'
-import Register from './components/pages/Register'
+import Login from './components/pages/Auth/Login'
+import Register from './components/pages/Auth/Register'
+import AddPet from './components/pages/Pet/AddPet'
 
 /* contexts */
 import messageContext from './context/messageContext'
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route path="/register">
             <Register />
+          </Route>
+          <Route path="/pet/add">
+            <AddPet />
           </Route>
           <Route path="/">
             <Home />
