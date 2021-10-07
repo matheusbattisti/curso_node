@@ -1,30 +1,21 @@
-import axios from "axios";
-import { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useState, useContext } from "react";
 import Input from "../../form/Input";
+
+/* contexts */
+import { Context } from "../../../context/UserContext";
 
 function Register() {
   const [user, setUser] = useState({});
-  let history = useHistory();
+  const { register } = useContext(Context);
 
   function handleChange(e) {
     setUser({ ...user, [e.target.name]: e.target.value });
   }
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
-
-    axios
-      .post(`http://localhost:5000/users/register`, user, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        console.log(response);
-        const data = response.data;
-        console.log(data);
-        history.push("/");
-      });
-  };
+    register(user);
+  }
 
   return (
     <section>

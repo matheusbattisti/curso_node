@@ -3,15 +3,13 @@ import React, { useContext } from "react";
 
 import styles from "./Navbar.module.css";
 
-/* context */
-import { userContext } from "../../context/userContext";
+/* contexts */
+import { Context } from "../../context/UserContext";
 
 /* hooks */
-import useLogout from "../../hooks/useLogout";
 
 function Navbar() {
-  const { user, isLoading } = useContext(userContext);
-  const { logout } = useLogout();
+  const { authenticated, logout } = useContext(Context);
 
   return (
     <nav className={styles.navbar}>
@@ -20,7 +18,7 @@ function Navbar() {
         <li>
           <Link to="/">Adotar</Link>
         </li>
-        {user ? (
+        {authenticated ? (
           <>
             <li>
               <Link to="/pet/add">Cadastrar Pet</Link>

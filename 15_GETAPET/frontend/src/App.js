@@ -1,31 +1,27 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import React, { useState } from 'react'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, { useState } from "react";
 
 /* components */
-import Navbar from './components/layout/Navbar'
-import Footer from './components/layout/Footer'
-import Message from './components/layout/Message'
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import Message from "./components/layout/Message";
 
 /* pages */
-import Home from './components/pages/Home'
-import Login from './components/pages/Auth/Login'
-import Register from './components/pages/Auth/Register'
-import AddPet from './components/pages/Pet/AddPet'
+import Home from "./components/pages/Home";
+import Login from "./components/pages/Auth/Login";
+import Register from "./components/pages/Auth/Register";
+import AddPet from "./components/pages/Pet/AddPet";
 
 /* contexts */
-import messageContext from './context/messageContext'
-import { userContext } from './context/userContext'
-
-/* hooks */
-import useFindUser from './hooks/useFindUser'
+import messageContext from "./context/messageContext";
+import { UserProvider } from "./context/UserContext";
 
 function App() {
-  const [message, setMessage] = useState('')
-  const { user, setUser, isLoading } = useFindUser()
+  const [message, setMessage] = useState("");
 
   return (
     <Router>
-      <userContext.Provider value={{ user, setUser, isLoading }}>
+      <UserProvider>
         <Navbar />
         <messageContext.Provider value={{ message, setMessage }}>
           <Message />
@@ -46,9 +42,9 @@ function App() {
         </Switch>
 
         <Footer />
-      </userContext.Provider>
+      </UserProvider>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

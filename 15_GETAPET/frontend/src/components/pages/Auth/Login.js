@@ -1,22 +1,24 @@
-import axios from 'axios'
-import { useState, useEffect, useContext } from 'react'
-import Input from '../../form/Input'
+import axios from "axios";
+import { useState, useEffect, useContext } from "react";
+import { useHistory } from "react-router-dom";
+import Input from "../../form/Input";
 
 /* contexts */
-import messageContext from '../../../context/messageContext'
+import messageContext from "../../../context/messageContext";
 
 function Login() {
-  const [auth, setAuth] = useState({})
+  const [auth, setAuth] = useState({});
+  const history = useHistory();
 
-  const MessageContext = useContext(messageContext)
+  const MessageContext = useContext(messageContext);
 
   function handleChange(e) {
-    setAuth({ ...auth, [e.target.name]: e.target.value })
+    setAuth({ ...auth, [e.target.name]: e.target.value });
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(auth)
+    e.preventDefault();
+    console.log(auth);
     // MessageContext.setMessage('eta')
 
     // console.log(MessageContext.message)
@@ -26,11 +28,12 @@ function Login() {
         withCredentials: true,
       })
       .then((response) => {
-        console.log(response)
-        const data = response.data
-        console.log(data)
-      })
-  }
+        console.log(response);
+        const data = response.data;
+        console.log(data);
+        history.push("/");
+      });
+  };
 
   return (
     <section>
@@ -53,7 +56,7 @@ function Login() {
         <input type="submit" value="Entrar" />
       </form>
     </section>
-  )
+  );
 }
 
-export default Login
+export default Login;
