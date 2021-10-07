@@ -106,24 +106,13 @@ module.exports = class UserController {
     await createUserToken(user, req, res);
   }
 
-  static async logout(req, res) {
-    res.clearCookie("jwt", {
-      path: "/",
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-    });
-
-    return res.status(200).json({ message: "Logout realizado com sucesso!" });
-  }
-
   static async checkUser(req, res) {
     let currentUser;
 
-    console.log(req.cookies);
+    console.log(req.headers.authorization);
 
-    if (req.cookies.jwt) {
-      const token = req.cookies.jwt;
+    if (req.headers.authorization) {
+      const token = getToken(req);
       const decoded = jwt.verify(token, "nossosecret");
 
       currentUser = await User.findById(decoded.id);

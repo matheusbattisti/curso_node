@@ -1,38 +1,20 @@
-import axios from "axios";
-import { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useState, useContext } from "react";
 import Input from "../../form/Input";
 
 /* contexts */
-import messageContext from "../../../context/messageContext";
+import { Context } from "../../../context/UserContext";
 
 function Login() {
-  const [auth, setAuth] = useState({});
-  const history = useHistory();
-
-  const MessageContext = useContext(messageContext);
+  const [user, setUser] = useState({});
+  const { login } = useContext(Context);
 
   function handleChange(e) {
-    setAuth({ ...auth, [e.target.name]: e.target.value });
+    setUser({ ...user, [e.target.name]: e.target.value });
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(auth);
-    // MessageContext.setMessage('eta')
-
-    // console.log(MessageContext.message)
-
-    axios
-      .post(`http://localhost:5000/users/login`, auth, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        console.log(response);
-        const data = response.data;
-        console.log(data);
-        history.push("/");
-      });
+    login(user);
   };
 
   return (

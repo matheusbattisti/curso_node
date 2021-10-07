@@ -49,7 +49,7 @@ function Register() {
           placeholder="Confirme a sua senha"
           handleOnChange={handleChange}
         />
-        <input type="submit" value="Entrar" />
+        <input type="submit" value="Cadastrar" />
       </form>
     </section>
   );

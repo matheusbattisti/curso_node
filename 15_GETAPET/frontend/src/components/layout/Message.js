@@ -1,36 +1,36 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useEffect, useState } from "react";
+import bus from "../../utils/bus";
 
 import styles from "./Message.module.css";
 
-/* contexts */
-import messageContext from "../../context/messageContext";
+function Message() {
+  let [visibility, setVisibility] = useState(false);
+  let [message, setMessage] = useState("");
+  let [type, setType] = useState("");
 
-function Message({ type }) {
-  //   const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    bus.addListener("flash", ({ message, type }) => {
+      setVisibility(true);
+      setMessage(message);
+      setType(type);
+      setTimeout(() => {
+        setVisibility(false);
+      }, 4000);
+    });
+  }, []);
 
-  //   console.log(message);
-
-  //   useEffect(() => {
-  //     if (!message) {
-  //       setVisible(false);
-  //       return;
-  //     }
-
-  //     setVisible(true);
-
-  //     const timer = setTimeout(() => {
-  //       setVisible(false);
-  //     }, 3000);
-
-  //     return () => clearTimeout(timer);
-  //   }, [message]);
-
-  const MessageContext = useContext(messageContext);
+  useEffect(() => {
+    if (document.querySelector(".close") !== null) {
+      document
+        .querySelector(".close")
+        .addEventListener("click", () => setVisibility(false));
+    }
+  });
 
   return (
-    <div className={`${styles.message} ${styles[type]}`}>
-      {MessageContext.message}
-    </div>
+    visibility && (
+      <div className={`${styles.message} ${styles[type]}`}>{message}</div>
+    )
   );
 }
 
