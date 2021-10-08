@@ -32,13 +32,28 @@ function Profile() {
     setUser({ ...user, [e.target.name]: e.target.value })
   }
 
+  function onFileChange(e) {
+    setUser({ ...user, [e.target.name]: e.target.files[0] })
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
     let msgType = 'success'
 
+    const formData = new FormData()
+
+    const userFormData = await Object.keys(user).forEach((key) =>
+      formData.append(key, user[key]),
+    )
+
+    formData.append('user', userFormData)
+
+    console.log(user)
+    console.log(formData)
+
     const data = await api
-      .patch(`/users/edit/${user._id}`, user, {
+      .patch(`/users/edit/${user._id}`, formData, {
         headers: {
           Authorization: `Bearer ${JSON.parse(token)}`,
         },
@@ -59,13 +74,18 @@ function Profile() {
   return (
     <section>
       <h1>Profile</h1>
+      {user.image && (
+        <img
+          src={`${process.env.REACT_APP_API}/images/users/${user.image}`}
+          alt={user.name}
+        />
+      )}
       <form onSubmit={handleSubmit}>
         <Input
-          text="Image"
+          text="Imagem"
           type="file"
           name="image"
-          handleOnChange={handleChange}
-          value={user.image}
+          handleOnChange={onFileChange}
         />
         <Input
           text="E-mail"
