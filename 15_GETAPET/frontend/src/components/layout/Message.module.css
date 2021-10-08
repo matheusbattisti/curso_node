@@ -4,7 +4,8 @@
   border: 1px solid #000;
   margin: 0 auto;
   text-align: center;
-  margin-bottom: 2em;
+  max-width: 60%;
+  margin: 1em auto;
   border-radius: 5px;
 }
 

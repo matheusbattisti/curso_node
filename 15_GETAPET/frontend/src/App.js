@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Message from "./components/layout/Message";
+import Container from "./components/layout/Container";
 
 /* pages */
 import Home from "./components/pages/Home";
@@ -22,24 +23,25 @@ function App() {
       <UserProvider>
         <Navbar />
         <Message />
-        <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/register">
-            <Register />
-          </Route>
-          <Route path="/user/profile">
-            <Profile />
-          </Route>
-          <Route path="/pet/add">
-            <AddPet />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-
+        <Container>
+          <Switch>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/register">
+              <Register />
+            </Route>
+            <Route path="/user/profile">
+              <Profile />
+            </Route>
+            <Route path="/pet/add">
+              <AddPet />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </Container>
         <Footer />
       </UserProvider>
     </Router>

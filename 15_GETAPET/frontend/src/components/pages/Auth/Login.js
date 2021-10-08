@@ -1,5 +1,8 @@
 import { useState, useContext } from "react";
 import Input from "../../form/Input";
+import { Link } from "react-router-dom";
+
+import styles from './Form.module.css'
 
 /* contexts */
 import { Context } from "../../../context/UserContext";
@@ -18,7 +21,7 @@ function Login() {
   };
 
   return (
-    <section>
+    <section className={styles.form_container}>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <Input
@@ -37,6 +40,7 @@ function Login() {
         />
         <input type="submit" value="Entrar" />
       </form>
+      <p>Não tem conta? <Link to="/register">Clique aqui.</Link></p>
     </section>
   );
 }

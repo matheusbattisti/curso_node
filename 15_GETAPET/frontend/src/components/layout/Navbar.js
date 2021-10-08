@@ -3,6 +3,8 @@ import React, { useContext } from "react";
 
 import styles from "./Navbar.module.css";
 
+import Logo from '../../assets/img/logo.png'
+
 /* contexts */
 import { Context } from "../../context/UserContext";
 
@@ -13,7 +15,10 @@ function Navbar() {
 
   return (
     <nav className={styles.navbar}>
-      <h2>Get A Pet</h2>
+      <div className={styles.navbar_logo}>
+        <img src={Logo} alt="Get A Pet" />
+        <h2>Get A Pet</h2>
+      </div>      
       <ul>
         <li>
           <Link to="/">Adotar</Link>
