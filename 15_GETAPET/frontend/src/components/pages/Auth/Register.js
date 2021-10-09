@@ -1,23 +1,23 @@
-import { useState, useContext } from "react";
-import Input from "../../form/Input";
-import { Link } from "react-router-dom";
+import { useState, useContext } from 'react'
+import Input from '../../form/Input'
+import { Link } from 'react-router-dom'
 
-import styles from './Form.module.css'
+import styles from '../../form/Form.module.css'
 
 /* contexts */
-import { Context } from "../../../context/UserContext";
+import { Context } from '../../../context/UserContext'
 
 function Register() {
-  const [user, setUser] = useState({});
-  const { register } = useContext(Context);
+  const [user, setUser] = useState({})
+  const { register } = useContext(Context)
 
   function handleChange(e) {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setUser({ ...user, [e.target.name]: e.target.value })
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
-    register(user);
+    e.preventDefault()
+    register(user)
   }
 
   return (
@@ -54,9 +54,11 @@ function Register() {
         />
         <input type="submit" value="Cadastrar" />
       </form>
-      <p>Já tem conta? <Link to="/login">Clique aqui.</Link></p>
+      <p>
+        Já tem conta? <Link to="/login">Clique aqui.</Link>
+      </p>
     </section>
-  );
+  )
 }
 
-export default Register;
+export default Register

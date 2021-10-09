@@ -1,24 +1,24 @@
-import { Link } from "react-router-dom";
-import React, { useContext } from "react";
+import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
 
-import styles from "./Navbar.module.css";
+import styles from './Navbar.module.css'
 
 import Logo from '../../assets/img/logo.png'
 
 /* contexts */
-import { Context } from "../../context/UserContext";
+import { Context } from '../../context/UserContext'
 
 /* hooks */
 
 function Navbar() {
-  const { authenticated, logout } = useContext(Context);
+  const { authenticated, logout } = useContext(Context)
 
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbar_logo}>
         <img src={Logo} alt="Get A Pet" />
         <h2>Get A Pet</h2>
-      </div>      
+      </div>
       <ul>
         <li>
           <Link to="/">Adotar</Link>
@@ -26,7 +26,7 @@ function Navbar() {
         {authenticated ? (
           <>
             <li>
-              <Link to="/pet/add">Cadastrar Pet</Link>
+              <Link to="/pet/mypets">Meus Pets</Link>
             </li>
             <li>
               <Link to="/user/profile">Meu Perfil</Link>
@@ -45,7 +45,7 @@ function Navbar() {
         )}
       </ul>
     </nav>
-  );
+  )
 }
 
-export default Navbar;
+export default Navbar

@@ -4,12 +4,16 @@ import Input from '../../form/Input'
 
 import { useState, useEffect } from 'react'
 
+import styles from './Profile.module.css'
+import formStyles from '../../form/Form.module.css'
+
 /* hooks */
 import useFlashMessage from '../../../hooks/useFlashMessage'
+import RoundedImage from '../../layout/RoundedImage'
 
 function Profile() {
   const [user, setUser] = useState({})
-  const [token, setToken] = useState(localStorage.getItem('token') || '')
+  const [token] = useState(localStorage.getItem('token') || '')
   const { setFlashMessage } = useFlashMessage()
 
   useEffect(() => {
@@ -25,8 +29,7 @@ function Profile() {
       })
 
     setUser(data)
-    console.log(user)
-  }, [])
+  }, [user, token])
 
   function handleChange(e) {
     setUser({ ...user, [e.target.name]: e.target.value })
@@ -49,9 +52,6 @@ function Profile() {
 
     formData.append('user', userFormData)
 
-    console.log(user)
-    console.log(formData)
-
     const data = await api
       .patch(`/users/edit/${user._id}`, formData, {
         headers: {
@@ -73,14 +73,16 @@ function Profile() {
 
   return (
     <section>
-      <h1>Profile</h1>
-      {user.image && (
-        <img
-          src={`${process.env.REACT_APP_API}/images/users/${user.image}`}
-          alt={user.name}
-        />
-      )}
-      <form onSubmit={handleSubmit}>
+      <div className={styles.profile_header}>
+        <h1>Perfil</h1>
+        {user.image && (
+          <RoundedImage
+            src={`${process.env.REACT_APP_API}/images/users/${user.image}`}
+            alt={user.name}
+          />
+        )}
+      </div>
+      <form onSubmit={handleSubmit} className={formStyles.form_container}>
         <Input
           text="Imagem"
           type="file"

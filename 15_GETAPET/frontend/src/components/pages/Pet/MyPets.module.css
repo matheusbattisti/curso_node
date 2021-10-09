@@ -1,0 +1,27 @@
+.petslist_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.petslist_header h1 {
+  margin: 0;
+}
+
+.petslist_header a {
+  text-decoration: none;
+  background-color: #16479d;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.5s;
+  padding: 0.5em 0.8em;
+  border-radius: 5px;
+  border: 2px solid #16479d;
+}
+
+.petslist_header a:hover {
+  background-color: transparent;
+  color: #16479d;
+}

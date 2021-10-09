@@ -1,24 +1,24 @@
-import { useState, useContext } from "react";
-import Input from "../../form/Input";
-import { Link } from "react-router-dom";
+import { useState, useContext } from 'react'
+import Input from '../../form/Input'
+import { Link } from 'react-router-dom'
 
-import styles from './Form.module.css'
+import styles from '../../form/Form.module.css'
 
 /* contexts */
-import { Context } from "../../../context/UserContext";
+import { Context } from '../../../context/UserContext'
 
 function Login() {
-  const [user, setUser] = useState({});
-  const { login } = useContext(Context);
+  const [user, setUser] = useState({})
+  const { login } = useContext(Context)
 
   function handleChange(e) {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setUser({ ...user, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    login(user);
-  };
+    e.preventDefault()
+    login(user)
+  }
 
   return (
     <section className={styles.form_container}>
@@ -40,9 +40,11 @@ function Login() {
         />
         <input type="submit" value="Entrar" />
       </form>
-      <p>Não tem conta? <Link to="/register">Clique aqui.</Link></p>
+      <p>
+        Não tem conta? <Link to="/register">Clique aqui.</Link>
+      </p>
     </section>
-  );
+  )
 }
 
-export default Login;
+export default Login

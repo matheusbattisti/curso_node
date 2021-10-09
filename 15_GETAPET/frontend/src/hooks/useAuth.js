@@ -1,6 +1,6 @@
 import api from '../utils/api'
 
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import useFlashMessage from './useFlashMessage'
 
