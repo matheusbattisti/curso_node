@@ -18,7 +18,7 @@ function AddPet() {
   const { setFlashMessage } = useFlashMessage()
 
   function onFileChange(e) {
-    e.preventDefault()
+    setPet({ ...pet, [e.target.name]: e.target.files[0] })
   }
 
   function handleChange(e) {
@@ -46,7 +46,7 @@ function AddPet() {
     formData.append('pet', petFormData)
 
     const data = await api
-      .patch(`pets/create`, formData, {
+      .post(`pets/create`, formData, {
         headers: {
           Authorization: `Bearer ${JSON.parse(token)}`,
         },

@@ -42,6 +42,7 @@ module.exports = class PetController {
       return
     }
 
+    console.log(req.body)
     console.log(images)
     return
 
