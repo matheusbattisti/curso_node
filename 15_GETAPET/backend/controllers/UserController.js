@@ -145,12 +145,12 @@ module.exports = class UserController {
     const user = await getUserByToken(token)
 
     // console.log(user);
-    console.log(req.body)
-    console.log(req.file.filename)
+    // console.log(req.body)
+    // console.log(req.file.filename)
 
     const name = req.body.name
     const email = req.body.email
-    const image = req.body.image
+    const image = req.file.filename
     const password = req.body.password
     const confirmpassword = req.body.confirmpassword
 
@@ -177,7 +177,7 @@ module.exports = class UserController {
 
     user.email = email
 
-    if (!image) {
+    if (image) {
       const imageName = req.file.filename
       user.image = imageName
     }

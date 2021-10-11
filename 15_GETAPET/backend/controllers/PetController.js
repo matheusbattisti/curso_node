@@ -13,8 +13,12 @@ module.exports = class PetController {
     const description = req.body.description
     const weight = req.body.weight
     const color = req.body.color
-    const images = req.body.images
+    const images = req.files
     const available = true
+
+    // console.log(req.body)
+    // console.log(images)
+    // return
 
     // validations
     if (!name) {
@@ -42,9 +46,7 @@ module.exports = class PetController {
       return
     }
 
-    console.log(req.body)
-    console.log(images)
-    return
+
 
     // get user
     const token = getToken(req)
@@ -57,7 +59,7 @@ module.exports = class PetController {
       description: description,
       weight: weight,
       color: color,
-      image: image,
+      images: images,
       available: available,
       user: {
         _id: user._id,

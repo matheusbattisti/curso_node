@@ -18,7 +18,7 @@ function AddPet() {
   const { setFlashMessage } = useFlashMessage()
 
   function onFileChange(e) {
-    setPet({ ...pet, [e.target.name]: e.target.files[0] })
+    setPet({ ...pet, [e.target.name]: e.target.files })
   }
 
   function handleChange(e) {
@@ -76,7 +76,7 @@ function AddPet() {
           type="file"
           name="images"
           handleOnChange={onFileChange}
-          multiple="true"
+          multiple={true}
         />
         <Input
           text="Nome do Pet"
@@ -84,7 +84,7 @@ function AddPet() {
           name="name"
           placeholder="Digite o nome"
           handleOnChange={handleChange}
-          value={pet.name}
+          value={pet.name || ''}
         />
         <Input
           text="Idade do Pet"
@@ -92,7 +92,7 @@ function AddPet() {
           name="age"
           placeholder="Digite a idade"
           handleOnChange={handleChange}
-          value={pet.age}
+          value={pet.age || ''}
         />
         <Input
           text="Peso do Pet"
@@ -102,10 +102,11 @@ function AddPet() {
           handleOnChange={handleChange}
         />
         <Select
-          name="category_id"
+          name="color"
           text="Selecione a categoria"
           options={colors}
           handleOnChange={handleColor}
+          value={pet.color || ''}
         />
         <input type="submit" value="Cadastrar" />
       </form>

@@ -29,7 +29,7 @@ function Profile() {
       })
 
     setUser(data)
-  }, [user, token])
+  }, [token])
 
   function handleChange(e) {
     setUser({ ...user, [e.target.name]: e.target.value })
@@ -95,7 +95,7 @@ function Profile() {
           name="email"
           placeholder="Digite o e-mail"
           handleOnChange={handleChange}
-          value={user.email}
+          value={user.email || ''}
         />
         <Input
           text="Nome"
@@ -103,7 +103,7 @@ function Profile() {
           name="name"
           placeholder="Digite o nome"
           handleOnChange={handleChange}
-          value={user.name}
+          value={user.name || ''}
         />
         <Input
           text="Senha"
