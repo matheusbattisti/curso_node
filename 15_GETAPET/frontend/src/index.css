@@ -10,3 +10,8 @@ h1 {
   margin-bottom: 1em;
   font-size: 2.1em;
 }
+
+.bold {
+  font-weight: bold;
+  color: #16479d;
+}

@@ -25,3 +25,45 @@
   background-color: transparent;
   color: #16479d;
 }
+
+.petslist_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.petlist_row {
+  border-bottom: 1px solid #16479d;
+  padding: 1em;
+  margin: 1em;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.petlist_row img {
+  margin-right: 1em;
+}
+
+.actions {
+  margin-left: auto;
+}
+
+.actions a,
+.actions button {
+  text-decoration: none;
+  color: #16479d;
+  border: 2px solid #16479d;
+  border-radius: 5px;
+  padding: 7px 12px;
+  background-color: #fff;
+  margin-left: 1em;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 12px;
+}
+
+.actions a:hover,
+.actions button:hover {
+  background-color: #16479d;
+  color: #fff;
+}

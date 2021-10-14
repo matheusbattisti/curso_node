@@ -1,6 +1,7 @@
 import api from '../../../utils/api'
 
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import styles from './AddPet.module.css'
 
@@ -12,6 +13,7 @@ import useFlashMessage from '../../../hooks/useFlashMessage'
 function AddPet() {
   const [token] = useState(localStorage.getItem('token') || '')
   const { setFlashMessage } = useFlashMessage()
+  const history = useHistory()
 
   async function registerPet(pet) {
     let msgType = 'success'
@@ -48,6 +50,7 @@ function AddPet() {
       })
 
     setFlashMessage(data.message, msgType)
+    history.push('/pet/mypets')
   }
 
   return (

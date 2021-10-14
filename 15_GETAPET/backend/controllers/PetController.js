@@ -57,13 +57,17 @@ module.exports = class PetController {
       description: description,
       weight: weight,
       color: color,
-      images: images,
       available: available,
+      images: [],
       user: {
         _id: user._id,
         user: user.name,
         image: user.image,
       },
+    })
+
+    images.map((image) => {
+      pet.images.push(image.filename)
     })
 
     try {
@@ -226,7 +230,6 @@ module.exports = class PetController {
     } else {
       updateData.images = []
       images.map((image) => {
-        console.log(image.filename)
         updateData.images.push(image.filename)
       })
     }

@@ -59,21 +59,23 @@ function MyPets() {
       <div className={styles.petslist_container}>
         {pets.length > 0 &&
           pets.map((pet) => (
-            <div key={pet._id}>
+            <div key={pet._id} className={styles.petlist_row}>
               <RoundedImage
                 src={`${process.env.REACT_APP_API}/images/pets/${pet.images[0]}`}
                 alt={pet.name}
                 width="px75"
               />
               <span className="bold">{pet.name}</span>
-              <Link to={`/pet/edit/${pet._id}`}>Editar</Link>
-              <button
-                onClick={() => {
-                  removePet(pet._id)
-                }}
-              >
-                Excluir
-              </button>
+              <div className={styles.actions}>
+                <Link to={`/pet/edit/${pet._id}`}>Editar</Link>
+                <button
+                  onClick={() => {
+                    removePet(pet._id)
+                  }}
+                >
+                  Excluir
+                </button>
+              </div>
             </div>
           ))}
         {pets.length === 0 && <p>Ainda não há pets cadastrados!</p>}
