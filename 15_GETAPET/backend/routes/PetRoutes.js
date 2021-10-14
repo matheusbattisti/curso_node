@@ -13,8 +13,14 @@ router.post(
   PetController.create,
 )
 router.get('/', PetController.getAll)
+router.get('/mypets', PetController.getAllUserPets)
 router.get('/:id', PetController.getPetById)
 router.delete('/:id', verifyToken, PetController.removePetById)
-router.patch('/:id', verifyToken, PetController.updatePet)
+router.patch(
+  '/:id',
+  verifyToken,
+  imageUpload.array('images'),
+  PetController.updatePet,
+)
 
 module.exports = router

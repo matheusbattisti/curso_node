@@ -17,7 +17,7 @@ module.exports = class PetController {
     const available = true
 
     // console.log(req.body)
-    // console.log(images)
+    console.log(images)
     // return
 
     // validations
@@ -45,8 +45,6 @@ module.exports = class PetController {
       res.status(422).json({ message: 'A imagem é obrigatória!' })
       return
     }
-
-
 
     // get user
     const token = getToken(req)
@@ -86,6 +84,19 @@ module.exports = class PetController {
 
     res.status(200).json({
       pets: pets,
+    })
+  }
+
+  // get all user pets
+  static async getAllUserPets(req, res) {
+    // get user
+    const token = getToken(req)
+    const user = await getUserByToken(token)
+
+    const pets = await Pet.find({ 'user._id': user._id })
+
+    res.status(200).json({
+      pets,
     })
   }
 
@@ -155,7 +166,7 @@ module.exports = class PetController {
     const description = req.body.description
     const weight = req.body.weight
     const color = req.body.color
-    const image = req.body.image
+    const images = req.files
     const available = req.body.available
 
     const updateData = {}
@@ -209,11 +220,15 @@ module.exports = class PetController {
       updateData.color = color
     }
 
-    if (!image) {
+    if (!images) {
       res.status(422).json({ message: 'A imagem é obrigatória!' })
       return
     } else {
-      updateData.image = image
+      updateData.images = []
+      images.map((image) => {
+        console.log(image.filename)
+        updateData.images.push(image.filename)
+      })
     }
 
     if (!available) {
