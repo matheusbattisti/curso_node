@@ -1,8 +1,8 @@
-const mongoose = require("../db/conn");
-const { Schema } = mongoose;
+const mongoose = require('../db/conn')
+const { Schema } = mongoose
 
 const User = mongoose.model(
-  "User",
+  'User',
   new Schema({
     name: {
       type: String,
@@ -19,7 +19,10 @@ const User = mongoose.model(
     image: {
       type: String,
     },
-  })
-);
+    phone: {
+      type: String,
+    },
+  }),
+)
 
-module.exports = User;
+module.exports = User

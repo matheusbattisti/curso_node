@@ -24,8 +24,16 @@ function Home() {
         {pets.length > 0 &&
           pets.map((pet) => (
             <div className={styles.pet_card}>
-              <div>pet image</div>
-              {pet.name}
+              <div
+                style={{
+                  backgroundImage: `url(${process.env.REACT_APP_API}/images/pets/${pet.images[0]})`,
+                }}
+                className={styles.pet_card_image}
+              ></div>
+              <h3>{pet.name}</h3>
+              <p>
+                <span className="bold">Peso:</span> {pet.weight}kg
+              </p>
               <Link to={`/pet/${pet._id}`}>Mais detalhes</Link>
             </div>
           ))}

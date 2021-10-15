@@ -110,6 +110,14 @@ function Profile() {
           value={user.name || ''}
         />
         <Input
+          text="Telefone"
+          type="text"
+          name="phone"
+          placeholder="Digite o seu telefone"
+          handleOnChange={handleChange}
+          value={user.phone || ''}
+        />
+        <Input
           text="Senha"
           type="password"
           name="password"

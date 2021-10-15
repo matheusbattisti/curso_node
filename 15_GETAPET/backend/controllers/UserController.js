@@ -13,6 +13,7 @@ module.exports = class UserController {
   static async register(req, res) {
     const name = req.body.name
     const email = req.body.email
+    const phone = req.body.phone
     const password = req.body.password
     const confirmpassword = req.body.confirmpassword
 
@@ -24,6 +25,11 @@ module.exports = class UserController {
 
     if (!email) {
       res.status(422).json({ message: 'O e-mail é obrigatório!' })
+      return
+    }
+
+    if (!phone) {
+      res.status(422).json({ message: 'O telefone é obrigatório!' })
       return
     }
 
@@ -60,6 +66,7 @@ module.exports = class UserController {
     const user = new User({
       name: name,
       email: email,
+      phone: phone,
       password: passwordHash,
     })
 
@@ -150,9 +157,15 @@ module.exports = class UserController {
 
     const name = req.body.name
     const email = req.body.email
-    const image = req.file.filename
+    const phone = req.body.phone
     const password = req.body.password
     const confirmpassword = req.body.confirmpassword
+
+    let image = ''
+
+    if (req.file) {
+      image = req.file.filename
+    }
 
     // validations
     if (!name) {
@@ -181,6 +194,13 @@ module.exports = class UserController {
       const imageName = req.file.filename
       user.image = imageName
     }
+
+    if (!phone) {
+      res.status(422).json({ message: 'O telefone é obrigatório!' })
+      return
+    }
+
+    user.phone = phone
 
     // check if password match
     if (password != confirmpassword) {

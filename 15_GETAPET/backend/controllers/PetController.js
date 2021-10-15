@@ -247,4 +247,25 @@ module.exports = class PetController {
 
     res.status(200).json({ pet: pet, message: 'Pet atualizado com sucesso!' })
   }
+
+  // schedule a visit
+  static async schedule(req, res) {
+    const id = req.params.id
+
+    // check if pet exists
+    const pet = await Pet.findOne({ _id: id })
+
+    // check if user owns this pet
+    const token = getToken(req)
+    const user = await getUserByToken(token)
+
+    console.log(pet.user._id)
+    console.log(user._id)
+
+    if (pet.user._id.equals(user._id)) {
+      res.status(422).json({
+        message: 'Você não pode agendar uma visita com seu próprio Pet!',
+      })
+    }
+  }
 }
