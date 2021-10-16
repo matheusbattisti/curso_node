@@ -44,6 +44,10 @@
   margin-right: 1em;
 }
 
+.petlist_row span {
+  min-width: 100px;
+}
+
 .actions {
   margin-left: auto;
 }
@@ -76,4 +80,13 @@
 .actions .conclude_btn:hover {
   color: #fff;
   background-color: #25b456;
+}
+
+/* my adoptions */
+.contacts {
+  margin-left: 2em;
+}
+
+.contacts p {
+  margin-bottom: 0.5em;
 }

@@ -1,18 +1,18 @@
-import api from "../../utils/api";
+import api from '../../utils/api'
 
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
-import styles from "./Home.module.css";
+import styles from './Home.module.css'
 
 function Home() {
-  const [pets, setPets] = useState([]);
+  const [pets, setPets] = useState([])
 
   useEffect(() => {
-    api.get("/pets").then((response) => {
-      setPets(response.data.pets);
-    });
-  }, []);
+    api.get('/pets').then((response) => {
+      setPets(response.data.pets)
+    })
+  }, [])
 
   return (
     <section>
@@ -37,7 +37,7 @@ function Home() {
               {pet.available ? (
                 <Link to={`/pet/${pet._id}`}>Mais detalhes</Link>
               ) : (
-                <p>Adotado!</p>
+                <p className={styles.adopted_text}>Adotado!</p>
               )}
             </div>
           ))}
@@ -46,7 +46,7 @@ function Home() {
         )}
       </div>
     </section>
-  );
+  )
 }
 
-export default Home;
+export default Home
