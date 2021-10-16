@@ -67,3 +67,13 @@
   background-color: #16479d;
   color: #fff;
 }
+
+.actions .conclude_btn {
+  color: #25b456;
+  border-color: #25b456;
+}
+
+.actions .conclude_btn:hover {
+  color: #fff;
+  background-color: #25b456;
+}

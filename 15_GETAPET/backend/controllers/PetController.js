@@ -61,8 +61,9 @@ module.exports = class PetController {
       images: [],
       user: {
         _id: user._id,
-        user: user.name,
+        name: user.name,
         image: user.image,
+        phone: user.phone
       },
     })
 
@@ -84,7 +85,7 @@ module.exports = class PetController {
 
   // get all registered pets
   static async getAll(req, res) {
-    const pets = await Pet.find()
+    const pets = await Pet.find().sort('-createdAt')
 
     res.status(200).json({
       pets: pets,
@@ -259,13 +260,51 @@ module.exports = class PetController {
     const token = getToken(req)
     const user = await getUserByToken(token)
 
-    console.log(pet.user._id)
-    console.log(user._id)
+    console.log(pet)
 
     if (pet.user._id.equals(user._id)) {
       res.status(422).json({
         message: 'Você não pode agendar uma visita com seu próprio Pet!',
       })
     }
+
+    // check if user has already adopted this pet
+    if(pet.adopter) {
+      if (pet.adopter._id.equals(user._id)) {
+        res.status(422).json({
+          message: 'Você já agendou uma visita para este Pet!',
+        })
+      }
+    }
+
+    // add user to pet
+    pet.adopter = {
+      _id: user._id,
+      name: user.name,
+      image: user.image
+    }
+
+    console.log(pet)
+
+    await Pet.findByIdAndUpdate(pet._id, pet)
+
+    res.status(200).json({ message: `A visita foi agendada com sucesso, entre em contato com ${pet.user.name} no telefone: ${pet.user.phone}` })
+
+  }
+
+  // conclude a pet adoption
+  static async concludeAdoption(req, res) {
+
+    const id = req.params.id
+
+    // check if pet exists
+    const pet = await Pet.findOne({ _id: id })
+
+    pet.available = false
+
+    await Pet.findByIdAndUpdate(pet._id, pet)
+
+    res.status(200).json({ pet: pet, message: `Parabéns! O ciclo de adoção foi finalizado com sucesso!` })
+
   }
 }

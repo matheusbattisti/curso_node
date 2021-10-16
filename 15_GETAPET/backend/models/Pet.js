@@ -32,7 +32,7 @@ const Pet = mongoose.model(
     },
     user: Object,
     adopter: Object,
-  }),
+  }, {timestamps: true}),
 )
 
 module.exports = Pet
