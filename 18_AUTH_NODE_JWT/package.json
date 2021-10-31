@@ -1,0 +1,23 @@
+{
+  "name": "18_AUTH_NODE_JWT",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "Matheus <matheus@horadecodar.com.br> (http://www.horadecodar.com.br/)",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.12"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
